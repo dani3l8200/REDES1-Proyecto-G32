@@ -1,0 +1,118 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="app-body">
+    <main class="main d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9 mx-auto">
+            <div class="card mx-4">
+              <div class="card-body p-4">
+                <form #formVendedor="ngForm" (ngSubmit)="addVendedor(formVendedor)">
+                  <h1 *ngIf="bandera==0">Registrar Vendedor</h1>
+                  <h1 *ngIf="bandera==1">Actualizar Vendedor</h1>
+                  <p class="text-muted" *ngIf="bandera==0">Crear nuevo vendedor</p>
+                  <p class="text-muted" *ngIf="bandera==1">Actualizar vendedor</p>
+                  <div class="input-group mb-3" *ngIf="bandera==1">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-user"></i></span>
+                    </div>
+                    <input type="text" name="id_vendedor" #id_vendedor="ngModel" [(ngModel)]="vendedorService.seleccionVendedor.id_vendedor" class="form-control" readonly>
+                  </div>
+                  <div class="input-group mb-3">
+                      <span class="input-group-text"><i class="icon-user"></i></span>
+                    <input type="text" name="dpi" #dpi="ngModel" [(ngModel)]="vendedorService.seleccionVendedor.dpi" class="form-control" placeholder="dpi" autocomplete="sku" required>
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-user"></i></span>
+                    </div>
+                    <input type="text" name="username" #username="ngModel" [(ngModel)]="vendedorService.seleccionVendedor.username" class="form-control" placeholder="username" autocomplete="username" required>
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                    </div>
+                    <input type="text" name="clave" #clave="ngModel" [(ngModel)]="vendedorService.seleccionVendedor.clave" class="form-control" placeholder="ingresar clave" autocomplete="clave" required>
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                    </div>
+                    <input type="text" name="fullname" #fullname="ngModel" [(ngModel)]="vendedorService.seleccionVendedor.fullname" class="form-control" placeholder="nombre completo" autocomplete="nombre completo"  required>
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                    </div>
+                    <input type="text" name="lastname" #lastname="ngModel" [(ngModel)]="vendedorService.seleccionVendedor.lastname" class="form-control" placeholder="ingresar apellidos" autocomplete="ingresar apellidos" required>
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                    </div>
+                    <input type="text" name="direccion" #direccion="ngModel" [(ngModel)]="vendedorService.seleccionVendedor.direccion" class="form-control" placeholder="ingresar direccion" autocomplete="ingresar direccion" required>
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                    </div>
+                      <input type="text" name="telefono" #telefono="ngModel" [(ngModel)]="vendedorService.seleccionVendedor.telefono" class="form-control" placeholder="Ingresar No. de telefono" autocomplete="Ingresar No. de telefono" required>
+                  </div>
+                  <button class="btn btn-block btn-success" *ngIf="bandera==0">Registrar</button>
+                  <button class="btn btn-block btn-primary" *ngIf="bandera==1">Actualizar</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+<section class="page-section" id="services">
+        <h2 class="text-center mt-0">Lista de Vendedores</h2>
+        <hr class="divider my-4" />
+</section>
+<div id="portfolio">
+            <div class="container-fluid p-0">
+                <div class="animated fadeIn">
+                    <div class="row">
+                        <div class="col-lg-12">
+                          <div class="card">
+                            <div class="card-header">
+                              <i class="fa fa-align-justify"></i>......
+                            </div>
+                            <div class="card-body">
+                              <table class="table table-bordered table-striped table-sm">
+                                <thead>
+                                  <tr>
+                                    <th>Dpi</th>
+                                    <th>Username</th>
+                                    <th>Clave</th>
+                                    <th>Fullname</th>
+                                    <th>Lastname</th>
+                                    <th>Direccion</th>
+                                    <th>Telefono</th>
+                                    <th></th>
+                                  </tr>
+                                </thead>
+                                <tbody *ngFor="let vendedor of vendedorService.vendedores">
+                                  <tr>
+                                    <td>{{vendedor.dpi}}</td>
+                                    <td>{{vendedor.username}}</td>
+                                    <td>{{vendedor.clave}}</td>
+                                    <td>{{vendedor.fullname}}</td>
+                                    <td>{{vendedor.lastname}}</td>
+                                    <td>{{vendedor.direccion}}</td>
+                                    <td>{{vendedor.telefono}}</td>
+                                   <td>
+                                      <span class="badge badge-primary" (click)="openForEdit(vendedor)">Editar</span>
+                                      <span class="badge badge-danger" (click)="deleteVendedor(vendedor.id_vendedor)">eliminar</span>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>

@@ -1,0 +1,61 @@
+<app-nav-principal></app-nav-principal>
+
+<div class="app-body">
+    <main class="main d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9 mx-auto">
+            <div class="card mx-4">
+              <div class="card-body p-4">
+   
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+<section class="page-section" id="services">
+        <h2 class="text-center mt-0">Lista de Libros Vendidos</h2>
+        <hr class="divider my-4" />
+</section>
+<div id="portfolio">
+            <div class="container-fluid p-0">
+                <div class="animated fadeIn">
+                    <div class="row">
+                        <div class="col-lg-12">
+                          <div class="card">
+                            <div class="card-header">
+                              <i class="fa fa-align-justify"></i> Ventas ralizadas
+                            </div>
+                            <div class="card-body">
+                              <table class="table table-bordered table-striped table-sm">
+                                <thead>
+                                  <tr>
+                                    <th>Titulo</th>
+                                    <th>Nombre Completo</th>
+                                    <th>Apellido</th>
+                                    <th>Fecha</th>
+                                    <th></th>
+                                  </tr>
+                                </thead>
+                                <tbody *ngFor="let venta of bookService.ventas">
+                                  <tr>
+                                    <td>{{venta.title}}</td>
+                                    <td>{{venta.fullname}}</td>
+                                    <td>{{venta.lastname}}</td>
+                                    <td>{{venta.fecha}}</td>
+             
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+<!--Formulario para un formDialogo en actualizacion de usuario-->
+
+

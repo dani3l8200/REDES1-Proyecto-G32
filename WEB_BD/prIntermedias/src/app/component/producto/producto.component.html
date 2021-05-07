@@ -1,0 +1,92 @@
+<app-nav-principal></app-nav-principal>
+
+<div class="app-body">
+    <main class="main d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9 mx-auto">
+            <div class="card mx-4">
+              <div class="card-body p-4">
+                <form #frmproducto="ngForm" (ngSubmit)="addProduct(frmproducto)">
+                  <h1 *ngIf="bandera==0">Registrar Libro</h1>
+                  <h1 *ngIf="bandera==1">Actualizar Libro</h1>
+                  <p class="text-muted" *ngIf="bandera==0">Agregar nuevo libro</p>
+                  <p class="text-muted" *ngIf="bandera==1">Actualizar dato libro </p>
+                  <div class="input-group mb-3" *ngIf="bandera==1">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-user"></i></span>
+                    </div>
+                    <input type="text" name="id_book" #id_book="ngModel" [(ngModel)]="productoService.seleccionProducto.id_book" class="form-control" readonly>
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-user"></i></span>
+                    </div>
+                    <input type="text" name="title" #title="ngModel" [(ngModel)]="productoService.seleccionProducto.title" class="form-control" placeholder="titulo" autocomplete="titulo" required>
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                    </div>
+                    <input type="text" name="autor" #autor="ngModel" [(ngModel)]="productoService.seleccionProducto.autor" class="form-control" placeholder="autor" autocomplete="autor" required>
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="icon-lock"></i></span>
+                    </div>
+                    <input type="text" name="descripcion" #descripcion="ngModel" [(ngModel)]="productoService.seleccionProducto.descripcion" class="form-control" placeholder="descripcion" autocomplete="descripcion"  required>
+                  </div>
+                  <button class="btn btn-block btn-success" *ngIf="bandera==0">Agregar producto</button>
+                  <button class="btn btn-block btn-primary" *ngIf="bandera==1">Actualizar</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+<section class="page-section" id="services">
+        <h2 class="text-center mt-0">Lista de Libros agregados</h2>
+        <hr class="divider my-4" />
+</section>
+<div id="portfolio">
+            <div class="container-fluid p-0">
+                <div class="animated fadeIn">
+                    <div class="row">
+                        <div class="col-lg-12">
+                          <div class="card">
+                            <div class="card-header">
+                              <i class="fa fa-align-justify"></i> Catalogo de libros 
+                            </div>
+                            <div class="card-body">
+                              <table class="table table-bordered table-striped table-sm">
+                                <thead>
+                                  <tr>
+                                    <th>Titulo</th>
+                                    <th>Autor</th>
+                                    <th>Descripcion</th>
+                                    <th></th>
+                                  </tr>
+                                </thead>
+                                <tbody *ngFor="let producto of productoService.productos">
+                                  <tr>
+                                    <td>{{producto.title}}</td>
+                                    <td>{{producto.autor}}</td>
+                                    <td>{{producto.descripcion}}</td>
+                                   <td>
+                                      <span class="badge badge-primary" (click)="openForEdit(producto)">Editar</span>
+                                      <span class="badge badge-danger" (click)="deleteProduct(producto.id_book)">eliminar</span>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+<!--Formulario para un formDialogo en actualizacion de usuario-->
+
